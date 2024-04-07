@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Locale</title>
+</head>
+<body>
+    {% extends "my_crucible/base.html" %}
+
+    {% block page_header %}
+
+        <div class="container mt-3">
+            <h2>{{ locale.title.upper }}</h2>
+            <h5>General Information (<a href="{% url 'my_crucible:edit_locale' locale.id %}">edit</a>)</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" style="background-color: #d5dff5;">
+                    <thead>
+                        <tr>
+                            <th>LLocale ID</th>
+                            <th>Date Added</th>
+                            <th>Updated</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Street Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>ZIP Code</th>
+                            <th>File Upload</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ locale.title.upper }}</td>
+                            <td>{{ locale.date_added }}</td>
+                            <td>{{ locale.updated }}</td>
+                            <td>{{ locale.first_name }}</td>
+                            <td>{{ locale.last_name }}</td>
+                            <td>{{ locale.email }}</td>
+                            <td>{{ locale.street_address }}</td>
+                            <td>{{ locale.city }}</td>
+                            <td>{{ locale.state }}</td>
+                            <td>{{ locale.zip_code }}</td>
+                            <td>{{ locale.file_upload }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <h5>Photo Checklist (<a href="{% url 'my_crucible:photo_checklist' locale.id %}">edit</a>)</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" style="background-color: #d5dff5;">
+                    <thead>
+                        <tr>
+                            <th>Front</th>
+                            <th>Back</th>
+                            <th>Left</th>
+                            <th>Right</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ locale.front }}</td>
+                            <td>{{ locale.back }}</td>
+                            <td>{{ locale.left }}</td>
+                            <td>{{ locale.right }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <a href="{% url 'my_crucible:export_locale' locale.id %}">
+                <button type="button" class="button">Export Locale Data</button>
+            </a>
+        </div>
+        <div>
+            {% if locale.file_upload %}
+                <a href="{% url 'my_crucible:download_file' locale.id %}">
+                    <button type="button" class="button">Download Attached File</button>
+                </a>
+            {% endif %}
+        </div>
+
+    {% endblock page_header %}
+
+    {% block content %}
+
+    {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Locales</title>
+</head>
+<body>
+    {% extends "my_crucible/base.html" %}
+
+    {% block page_header %}
+        <h2>Locales</h2><h6>Current Total: {{ count }}</h6>
+    {% endblock page_header %}
+
+    {% block content %}
+
+        <ul class="list-group border-bottom pb-2 mb-4">
+            {% for locale in locales %}
+
+                <li class="list-group-item border-1">
+                    <div class="p-2 text-light border rounded-2" style="background-color: #455eb5;">
+                        <div class="container text-light">
+                            <a href="{{ locale.get_absolute_url }}" style="color: white"><h5>{{ locale.title.upper }}</h5></a>
+                            <div style="font-size: small;">Last Updated: {{ locale.updated }}</div>
+                            <p class="tags" style="font-size: small;"><strong>Tags: {{ locale.tags.all|join:", " }}</strong></p>
+                        </div>
+                    </div>
+                </li>
+
+            {% empty %}
+                <li class="list-group-item border-0">No locales have been added yet.</li>
+            {% endfor %}
+        </ul>
+        <div><a href="{% url 'my_crucible:export_all_locales' %}">
+            <button type="button" class="button">Export All Locale Data</button></a></div>
+        <br><a href="{% url 'my_crucible:new_locale' %}">Add New Locale</a>
+
+    {% include "my_crucible/pagination.html" with page=locales %}
+        <br>
+
+    {% endblock content %}
+</body>
+</html>

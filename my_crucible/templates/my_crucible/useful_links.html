@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Useful Links</title>
+</head>
+<body>
+    {% extends "my_crucible/base.html" %}
+
+    {% block page_header %}
+        <h2>Useful Links</h2>
+    {% endblock page_header %}
+
+    {% block content %}
+
+        <div class="p-3 mb-3 text-light border rounded-3" style="background-color: #455eb5;">
+            <div class="container py-1">
+                <li class="nav-item">
+                    <a href="http://www.google.com" style="color: white"><strong>Google</strong></a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://en.wikipedia.org/wiki/Main_Page" style="color: white"><strong>Wikipedia</strong></a>
+                </li>
+            </div>
+        </div>
+
+    {% endblock content %}
+</body>
+</html>

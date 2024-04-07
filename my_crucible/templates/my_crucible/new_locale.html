@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Locale</title>
+</head>
+<body>
+    {% extends "my_crucible/base.html" %}
+
+    {% block page_header %}
+        <h1>Add New Locale</h1>
+    {% endblock page_header %}
+
+    {% block content %}
+
+        <div class="p-3 mb-4 text-body border rounded-3" style="background-color: #f2a680;">
+            <div class="container py-1">
+                <form action="{% url 'my_crucible:new_locale' %}" method="post" enctype="multipart/form-data" >
+                    <div class="row row-cols-lg-auto g-3 align-items-center">
+                        {% csrf_token %}
+                        {{ locale_form.as_div }}
+                    </div>
+                    <div class="col-12">
+                        <br><button class="align-items-left" name="submit">Add Locale</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    {% endblock content %}
+</body>
+</html>
