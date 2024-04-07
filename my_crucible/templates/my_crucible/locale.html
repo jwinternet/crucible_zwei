@@ -13,10 +13,10 @@
             <h2>{{ locale.title.upper }}</h2>
             <h5>General Information (<a href="{% url 'my_crucible:edit_locale' locale.id %}">edit</a>)</h5>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" style="background-color: #d5dff5;">
+                <table class="table table-hover table-bordered table-striped" style="background-color: #d5dff5; white-space: nowrap">
                     <thead>
                         <tr>
-                            <th>LLocale ID</th>
+                            <th>Locale ID</th>
                             <th>Date Added</th>
                             <th>Updated</th>
                             <th>First Name</th>
@@ -29,7 +29,7 @@
                             <th>File Upload</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-group-divider">
                         <tr>
                             <td>{{ locale.title.upper }}</td>
                             <td>{{ locale.date_added }}</td>
@@ -50,7 +50,7 @@
         <div class="container mt-3">
             <h5>Photo Checklist (<a href="{% url 'my_crucible:photo_checklist' locale.id %}">edit</a>)</h5>
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" style="background-color: #d5dff5;">
+                <table class="table table-hover table-bordered table-striped" style="background-color: #d5dff5; white-space: nowrap">
                     <thead>
                         <tr>
                             <th>Front</th>
@@ -59,7 +59,7 @@
                             <th>Right</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-group-divider">
                         <tr>
                             <td>{{ locale.front }}</td>
                             <td>{{ locale.back }}</td>

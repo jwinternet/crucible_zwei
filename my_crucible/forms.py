@@ -4,9 +4,6 @@ from django import forms
 from .models import Locale
 
 
-# INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 99)]
-
-
 class LocaleForm(forms.ModelForm):
     title = forms.CharField(
         label="",
