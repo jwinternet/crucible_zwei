@@ -5,7 +5,7 @@
     <title>Comment Form</title>
 </head>
 <body>
-    <h2>Add A New Comment</h2>
+    <h5>Add A New Comment</h5>
     <form action="{% url "my_crucible:locale_comment" locale.id %}" method="post">
         {{ form.as_p }}
         {% csrf_token %}

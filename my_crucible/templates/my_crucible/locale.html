@@ -83,9 +83,9 @@
             {% endif %}
         </div>
         {% with comments.count as total_comments %}
-            <h2>
-                {{ total_comments }} comment{{ total_comments|pluralize }}
-            </h2>
+            <br><h5>
+                {{ total_comments }} Comment{{ total_comments|pluralize }}
+            </h5>
         {% endwith %}
         {% for comment in comments %}
             <div class="comment">
