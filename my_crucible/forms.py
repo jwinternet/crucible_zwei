@@ -1,7 +1,7 @@
 #!/usr/bin/python3.12
 from django import forms
 
-from .models import Locale
+from .models import Locale, Comment
 
 
 class LocaleForm(forms.ModelForm):
@@ -86,3 +86,9 @@ class PhotoForm(forms.ModelForm):
     class Meta:
         model = Locale
         fields = ["front", "back", "left", "right"]
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'email', 'body']

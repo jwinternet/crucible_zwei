@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment</title>
+</head>
+<body>
+    {% extends "my_crucible/base.html" %}
+
+    {% block title %}Add A Comment{% endblock %}
+
+    {% block content %}
+        {% if comment %}
+            <h2>Your comment has been added.</h2>
+            <p><a href="{{ locale.get_absolute_url }}">Back to the locale.</a></p>
+        {% else %}
+            {% include "my_crucible/includes/comment_form.html" %}
+        {% endif %}
+    {% endblock %}
+</body>
+</html>

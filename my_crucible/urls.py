@@ -26,4 +26,5 @@ urlpatterns = [
     path('export_locale/<int:locale_id>/', views.export_locale, name='export_locale'),
     path('download_file/<int:locale_id>/', views.download_file, name='download_file'),
     path('search_results/', views.SearchResultsView.as_view(), name='search_results'),
+    path('<int:locale_id>/comment/', views.locale_comment, name='locale_comment'),
 ]

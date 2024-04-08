@@ -5,11 +5,12 @@ from django.http import HttpResponse, FileResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from django.db.models import Q
+from django.views.decorators.http import require_POST
 
 from csv import writer
 
-from .models import Locale
-from .forms import LocaleForm, PhotoForm
+from .models import Locale, Comment
+from .forms import LocaleForm, PhotoForm, CommentForm
 
 
 def index(request):
@@ -47,9 +48,10 @@ def locale(request, locale_id):
         # # Make sure the locale belongs to the current user.
         # if site.owner != request.user:
         #     raise Http404
-
+        comments = locale.comments.all()
+        form = CommentForm()
         context = {
-            "locale": locale
+            "locale": locale, "comments": comments, "form": form
         }
         return render(request, "my_crucible/locale.html", context)
 
@@ -215,3 +217,21 @@ class SearchResultsView(ListView):
             Q(title__icontains=query)
         )
         return object_list
+
+
+@require_POST
+def locale_comment(request, locale_id):
+    """Edit an existing locale."""
+    locale = get_object_or_404(Locale, id=locale_id)
+    comment = None
+
+    # POST data submitted; process data.
+    form = CommentForm(data=request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.locale = locale
+        comment.save()
+
+    # Display a blank or invalid form.
+    context = {"locale": locale, "form": form, "comment": comment}
+    return render(request, "my_crucible/comment.html", context)
