@@ -25,7 +25,7 @@ def locales(request):
     count = locales.count()
 
     # Pagination with 3 posts per page
-    paginator = Paginator(locales, 10)
+    paginator = Paginator(locales, 5)
     page_number = request.GET.get("page", 1)
     try:
         locale = paginator.page(page_number)
@@ -188,18 +188,18 @@ def download_file(request, locale_id):
 
 
 @login_required
+def tools(request):
+    return render(request, "my_crucible/tools.html")
+
+
+@login_required
 def useful_links(request):
     return render(request, "my_crucible/useful_links.html")
 
 
 @login_required
-def documentation(request):
-    return render(request, "my_crucible/documentation.html")
-
-
-@login_required
-def contacts(request):
-    return render(request, "my_crucible/contacts.html")
+def files(request):
+    return render(request, "my_crucible/files.html")
 
 
 @login_required

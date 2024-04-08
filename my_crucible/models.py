@@ -12,7 +12,7 @@ class Locale(models.Model):
 
     # General Locale Information
     title = models.CharField(
-        max_length=4,
+        max_length=100,
         unique=True
     )
     slug = models.SlugField(max_length=250)

@@ -11,9 +11,9 @@ urlpatterns = [
     path("", views.index, name="index"),
     # Page that shows all locales.
     path("locales/", views.locales, name="locales"),
+    path("tools/", views.tools, name="tools"),
     path("useful_links/", views.useful_links, name="useful_links"),
-    path("documentation/", views.documentation, name="documentation"),
-    path("contacts/", views.contacts, name="contacts"),
+    path("files/", views.files, name="files"),
     path("about/", views.about, name="about"),
     # Detail page for a single locale.
     path("locales/<slug:locale_id>/", views.locale, name="locale"),
